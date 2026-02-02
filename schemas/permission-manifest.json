@@ -1,0 +1,142 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agentfutures.dev/schemas/permission-manifest.json",
+  "title": "Permission Manifest",
+  "description": "Declares what resources a skill/agent needs access to",
+  "type": "object",
+  "required": ["id", "name", "version", "permissions"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique skill/agent identifier"
+    },
+    "name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "did": { "type": "string" },
+        "name": { "type": "string" },
+        "platform": { "type": "string" }
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "properties": {
+        "filesystem": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Paths the skill can read from"
+            },
+            "write": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Paths the skill can write to"
+            }
+          }
+        },
+        "network": {
+          "type": "object",
+          "properties": {
+            "outbound": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Domains/IPs the skill can contact"
+            },
+            "inbound": {
+              "type": "boolean",
+              "description": "Can the skill listen for connections?"
+            }
+          }
+        },
+        "environment": {
+          "type": "object",
+          "properties": {
+            "read": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Environment variables the skill can read"
+            },
+            "required": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Required env vars for skill to function"
+            }
+          }
+        },
+        "shell": {
+          "type": "object",
+          "properties": {
+            "allowed": {
+              "type": "boolean",
+              "description": "Can the skill execute shell commands?"
+            },
+            "commands": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Specific commands allowed (if restricted)"
+            }
+          }
+        },
+        "secrets": {
+          "type": "object",
+          "properties": {
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["api_key", "oauth_token", "password", "private_key", "webhook_secret"]
+              },
+              "description": "Types of secrets the skill needs"
+            },
+            "services": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Services requiring credentials (e.g., 'openai', 'github')"
+            }
+          }
+        }
+      }
+    },
+    "dangerous": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "arbitrary_code_execution",
+          "credential_access",
+          "system_modification",
+          "network_unrestricted",
+          "persistence"
+        ]
+      },
+      "description": "Explicit dangerous capabilities (red flags)"
+    },
+    "justification": {
+      "type": "object",
+      "description": "Why each permission is needed",
+      "additionalProperties": { "type": "string" }
+    },
+    "attestations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "validator": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "verdict": { "type": "string", "enum": ["safe", "suspicious", "malicious", "unknown"] },
+          "notes": { "type": "string" },
+          "signature": { "type": "string" }
+        }
+      }
+    }
+  }
+}

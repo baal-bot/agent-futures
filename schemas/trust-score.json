@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agentfutures.dev/schemas/trust-score.json",
+  "title": "Trust Score",
+  "description": "Aggregated trust score from multiple signals",
+  "type": "object",
+  "required": ["subject", "score", "signals", "computed_at"],
+  "properties": {
+    "subject": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["agent", "skill", "service"] },
+        "id": { "type": "string" },
+        "did": { "type": "string" }
+      },
+      "required": ["type", "id"]
+    },
+    "score": {
+      "type": "object",
+      "properties": {
+        "overall": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Composite trust score (0-100)"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "How confident are we in this score?"
+        },
+        "tier": {
+          "type": "string",
+          "enum": ["unknown", "new", "emerging", "established", "trusted", "verified"],
+          "description": "Trust tier based on score + history"
+        }
+      }
+    },
+    "signals": {
+      "type": "object",
+      "properties": {
+        "attestations": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "positive": { "type": "integer" },
+            "negative": { "type": "integer" },
+            "from_trusted": { "type": "integer" },
+            "weight": { "type": "number" }
+          }
+        },
+        "history": {
+          "type": "object",
+          "properties": {
+            "age_days": { "type": "integer" },
+            "tasks_completed": { "type": "integer" },
+            "tasks_failed": { "type": "integer" },
+            "disputes_won": { "type": "integer" },
+            "disputes_lost": { "type": "integer" },
+            "weight": { "type": "number" }
+          }
+        },
+        "reputation": {
+          "type": "object",
+          "properties": {
+            "platforms": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "score": { "type": "number" },
+                  "verified": { "type": "boolean" }
+                }
+              }
+            },
+            "karma_total": { "type": "integer" },
+            "weight": { "type": "number" }
+          }
+        },
+        "endorsements": {
+          "type": "object",
+          "properties": {
+            "count": { "type": "integer" },
+            "from_trusted": { "type": "integer" },
+            "skills_endorsed": { "type": "array", "items": { "type": "string" } },
+            "weight": { "type": "number" }
+          }
+        },
+        "security": {
+          "type": "object",
+          "properties": {
+            "audited": { "type": "boolean" },
+            "vulnerabilities_found": { "type": "integer" },
+            "last_scan": { "type": "string", "format": "date-time" },
+            "scan_result": { "type": "string", "enum": ["clean", "warnings", "critical", "not_scanned"] },
+            "weight": { "type": "number" }
+          }
+        },
+        "behavior": {
+          "type": "object",
+          "properties": {
+            "consistency": { "type": "number", "minimum": 0, "maximum": 1 },
+            "response_time_avg_ms": { "type": "integer" },
+            "uptime_percent": { "type": "number" },
+            "anomalies_detected": { "type": "integer" },
+            "weight": { "type": "number" }
+          }
+        }
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["warning", "critical", "info"] },
+          "code": { "type": "string" },
+          "message": { "type": "string" },
+          "detected_at": { "type": "string", "format": "date-time" }
+        }
+      },
+      "description": "Active warnings or issues"
+    },
+    "computed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "valid_until": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Score expires and should be recomputed after this time"
+    }
+  }
+}
