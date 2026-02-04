@@ -1,6 +1,6 @@
 {
   "name": "agent-futures-hub",
-  "version": "0.3.0",
+  "version": "0.4.0-beta.0",
   "description": "Collaborative infrastructure for AI agent economy - Track A: Trust Rails",
   "main": "server.js",
   "scripts": {

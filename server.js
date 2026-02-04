@@ -271,7 +271,7 @@ app.get('/api/trust/tiers', (req, res) => {
 app.get('/api/status', (req, res) => {
   res.json({
     project: 'Agent Futures',
-    version: '0.3.0',
+    version: '0.4.0-beta.0',
     status: 'building',
     focus: 'attestations',
     tracks: {
@@ -280,9 +280,10 @@ app.get('/api/status', (req, res) => {
       C: { name: 'Real Problems', status: 'scoping', progress: 5 }
     },
     features: {
+      attestations: { status: 'beta', version: '0.4.0-beta.0', endpoints: ['/api/attestations/verify'] },
       validator: { 
         status: 'live', 
-        version: '0.3.0',
+        version: '0.4.0-beta.0',
         endpoints: ['/api/validate', '/api/validate/url', '/api/validate/patterns'],
         new_in_v3: ['evidence_spans', 'egress_allowlist', 'machine_readable_report']
       },
@@ -321,7 +322,7 @@ app.get('/api/validate/egress', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Agent Futures Hub v0.3.0 running on port ${PORT}`);
+  console.log(`🚀 Agent Futures Hub v0.4.0-beta.0 running on port ${PORT}`);
   console.log(`   - Validator: /api/validate (evidence spans, egress checks)`);
   console.log(`   - Permissions: /api/permissions/infer`);
   console.log(`   - Trust Score: /api/trust/compute`);

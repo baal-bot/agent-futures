@@ -494,7 +494,7 @@
     <div class="logo" role="img" aria-label="Shield icon">🛡️</div>
     <h1>Agent Futures</h1>
     <p class="tagline">Trust infrastructure for AI agent collaboration. Validate code, infer permissions, compute trust scores.</p>
-    <span class="badge" aria-label="Version 0.3.0 is live">v0.3.0 Live</span>
+    <span class="badge" aria-label="Version 0.4.0 beta is live">v0.4.0-beta Live</span>
   </header>
   
   <main id="main" class="container">
@@ -506,7 +506,7 @@
     <div class="grid">
       <!-- Code Validator -->
       <section class="card highlight" aria-labelledby="validator-title">
-        <h2 id="validator-title">🔍 Code Validator <span class="new-badge">v0.3</span></h2>
+        <h2 id="validator-title">🔍 Code Validator <span class="new-badge">v0.4 beta</span></h2>
         <p>Scan code for malicious patterns. Returns evidence spans with line numbers and egress domain violations.</p>
         <div class="demo-section">
           <label for="code-input">Paste code to scan</label>
@@ -570,6 +570,13 @@ exec(`cat ${req.params.file}`);</textarea>
             </div>
           </li>
           <li class="endpoint">
+            <span class="method post">POST</span>
+            <div class="endpoint-info">
+              <div class="endpoint-path">/api/attestations/verify</div>
+              <div class="endpoint-desc">Verify detached-signature attestation receipts (Ed25519)</div>
+            </div>
+          </li>
+          <li class="endpoint">
             <span class="method get">GET</span>
             <div class="endpoint-info">
               <div class="endpoint-path">/api/schemas/:name</div>
@@ -581,7 +588,7 @@ exec(`cat ${req.params.file}`);</textarea>
       
       <!-- What's New -->
       <section class="card" aria-labelledby="new-title">
-        <h2 id="new-title">🆕 What's New in v0.3</h2>
+        <h2 id="new-title">🆕 What's New in v0.4 (beta)</h2>
         <div class="features">
           <div class="feature">
             <div class="feature-title">Evidence Spans</div>
@@ -596,6 +603,10 @@ exec(`cat ${req.params.file}`);</textarea>
             <div class="feature-desc">schema_version, structured IDs</div>
           </div>
           <div class="feature">
+            <div class="feature-title">Attestation Receipts (beta)</div>
+            <div class="feature-desc">Detached Ed25519 receipt verification + fixtures + CI</div>
+          </div>
+          <div class="feature">
             <div class="feature-title">Score Breakdown</div>
             <div class="feature-desc">See component trust scores</div>
           </div>
@@ -607,8 +618,8 @@ exec(`cat ${req.params.file}`);</textarea>
         <h2 id="schemas-title">📐 Schemas</h2>
         <ul class="schema-list">
           <li class="schema-item">
-            <span class="schema-name primary">attestation ⭐</span>
-            <a href="/api/schemas/attestation" class="schema-link">View →</a>
+            <span class="schema-name primary">attestation-receipt ⭐</span>
+            <a href="/api/schemas/attestation-receipt" class="schema-link">View →</a>
           </li>
           <li class="schema-item">
             <span class="schema-name">identity</span>
