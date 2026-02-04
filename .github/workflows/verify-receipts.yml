@@ -1,0 +1,29 @@
+name: Verify attestation receipt fixtures
+
+on:
+  push:
+    paths:
+      - 'lib/receiptVerifier.js'
+      - 'scripts/**'
+      - 'fixtures/attestation-receipts/**'
+      - 'schemas/attestation-receipt.json'
+      - '.github/workflows/verify-receipts.yml'
+  pull_request:
+    paths:
+      - 'lib/receiptVerifier.js'
+      - 'scripts/**'
+      - 'fixtures/attestation-receipts/**'
+      - 'schemas/attestation-receipt.json'
+      - '.github/workflows/verify-receipts.yml'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run verify:fixtures

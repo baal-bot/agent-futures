@@ -1,0 +1,8 @@
+{
+  "name": "replay",
+  "publicKey": "../../keys/issuer1.pub.pem",
+  "now": "2026-02-04T20:00:00Z",
+  "enableReplayCache": true,
+  "expect": { "ok": true },
+  "secondRun": { "expect": { "ok": false } }
+}
