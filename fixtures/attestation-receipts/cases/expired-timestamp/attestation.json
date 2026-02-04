@@ -1,0 +1,20 @@
+{
+  "receipt_version": "0.1",
+  "id": "urn:uuid:11111111-1111-1111-1111-111111111111",
+  "type": [
+    "TaskAttestationReceipt"
+  ],
+  "issuer": "did:key:issuer1",
+  "subject": "did:example:requester",
+  "issuanceDate": "2026-02-04T19:08:00Z",
+  "expirationDate": "2020-01-01T00:00:00Z",
+  "credentialSubject": {
+    "taskType": "analysis",
+    "taskHash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "outputHash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "status": "completed",
+    "duration_ms": 1234,
+    "quality_score": 0.92
+  },
+  "nonce": "r4nd0m-n0nc3"
+}

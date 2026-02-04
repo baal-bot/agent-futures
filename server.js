@@ -3,6 +3,7 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 const { scanCode, inferPermissions, computeTrustScore, DANGEROUS_PATTERNS, DEFAULT_ALLOWED_EGRESS } = require('./lib/validator');
+const { verifyReceipt } = require('./lib/receiptVerifier');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +34,42 @@ app.get('/api/schemas/:name', (req, res) => {
     res.json(JSON.parse(fs.readFileSync(schemaPath, 'utf8')));
   } else {
     res.status(404).json({ error: 'Schema not found' });
+  }
+});
+
+// ============================================
+// ATTESTATION RECEIPT ENDPOINTS
+// ============================================
+
+/**
+ * POST /api/attestations/verify
+ * Verify a detached-signature attestation receipt (v0.1)
+ * Body: { attestation: object, signature: string(base64), publicKey: string(PEM), now?: string }
+ */
+app.post('/api/attestations/verify', (req, res) => {
+  try {
+    const { attestation, signature, publicKey, now } = req.body || {};
+
+    if (!attestation || typeof attestation !== 'object') {
+      return res.status(400).json({ ok: false, error: 'attestation (object) is required' });
+    }
+    if (!signature || typeof signature !== 'string') {
+      return res.status(400).json({ ok: false, error: 'signature (base64 string) is required' });
+    }
+    if (!publicKey || typeof publicKey !== 'string') {
+      return res.status(400).json({ ok: false, error: 'publicKey (PEM string) is required' });
+    }
+
+    const result = verifyReceipt({
+      attestation,
+      signature,
+      publicKey,
+      now: now || new Date()
+    });
+
+    res.json({ ok: result.ok, hits: result.hits });
+  } catch (error) {
+    res.status(500).json({ ok: false, error: 'Verification failed', message: error.message });
   }
 });
 

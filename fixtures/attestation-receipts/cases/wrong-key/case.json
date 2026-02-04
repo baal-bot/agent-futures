@@ -1,0 +1,6 @@
+{
+  "name": "wrong-key",
+  "publicKey": "../../keys/issuer2.pub.pem",
+  "now": "2026-02-04T20:00:00Z",
+  "expect": { "ok": false }
+}
